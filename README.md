@@ -1,6 +1,7 @@
 # Hammingcode
 ## Encoder
-- None
+- Ruby
 
 ## Decoder
 - Java
+- php
