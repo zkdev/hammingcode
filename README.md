@@ -5,3 +5,4 @@
 ## Decoder
 - Java
 - php
+- bash
