@@ -54,16 +54,16 @@ def valid(bitstring)
     return true
 end
 
-def _get_parity_value(pos, bitstring, exclude)
+def _get_parity_value(pos, bitstring, start)
     sum = 0
     # indexing assumes to start from so that the bitshift rule can be applied
-    for index in (exclude + 2 .. bitstring.length)
+    for index in (start + 1 .. bitstring.length)
         if ((index >> pos) & 1) == 1
             # indexing fixed here for actual use
             sum += bitstring[index - 1].to_i
         end
     end
-    log("INFO", "Parity bit at index #{exclude} has the value #{sum % 2}.")
+    log("INFO", "Parity bit at index #{start} has the value #{sum % 2}.")
     return (sum % 2).to_s
 end
 
