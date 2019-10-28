@@ -17,7 +17,13 @@ declare -a bitstring
 
 init() {
   local x=$1
-  for (( i=0 ; i < ${#x} ; i++ )); do bitstring[i]=${x:i:1}; done
+  for (( i=0 ; i < ${#x} ; i++ ))
+  do
+    if [ ${x:i:1} -eq 0 ] || [ ${x:i:1} -eq 1 ]
+    then
+      bitstring+=(${x:i:1})
+    fi
+  done
 }
 
 if [ ${#@} -eq 1 ]
@@ -50,8 +56,6 @@ do
     val=$((val % 2))
     errindex=$((errindex + ((val * i))))
     ((bitpos++))
-  else
-    result+=(${bitstring[((i - 1))]})
   fi
 done
 if [ $errindex -gt 0 ]
@@ -62,5 +66,14 @@ then
 else
   log "No error was detected"
 fi
+for (( i=1; i<=${#bitstring[@]}; i++ ));
+do
+  if [ $((i & ((i - 1)))) -ne 0 ]
+  then
+    result+=(${bitstring[((i - 1))]})
+  fi
+done
 
 echo "Result: ${result[@]}"
+
+exit 0
