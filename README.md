@@ -1,8 +1,9 @@
 # Hammingcode
 ## Encoder
 - Ruby
+- Prolog
 
 ## Decoder
 - Java
-- php
-- bash
+- Ruby
+- Bash
